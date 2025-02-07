@@ -1,24 +1,21 @@
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+*{
+  font-family: 'Monster';
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+h1{
+  font-family: 'MonsterH1';
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+@font-face {
+  font-family: 'Monster'; /* Nombre de la fuente */
+  src: url('../public/monsterhuntercond.ttf') format('truetype'); /* Ruta al archivo y su formato */
 }
+@font-face {
+  font-family: 'MonsterH1'; /* Nombre de la fuente */
+  src: url('../public/monsterhunterbevel.ttf') format('truetype'); /* Ruta al archivo y su formato */
+}
+
+
 
 button {
   border-radius: 8px;
@@ -39,15 +36,4 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+
