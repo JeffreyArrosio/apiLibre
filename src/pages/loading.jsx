@@ -15,6 +15,8 @@ export default function Loading() {
     ]
 
     const randImg = loadImg[Math.floor(Math.random() * 7)]
+    let src
+    (localStorage.getItem("theme") === "dark") ? src = "https://lottie.host/00062710-1bb7-4aad-b60c-d3fe9d723396/Ys0cG2Vk5e.lottie" : src = "https://lottie.host/3acd9112-066e-410d-bcaa-9f4aeb213258/3YxKxODuZI.lottie"
 
     return (
         <div>
@@ -24,7 +26,7 @@ export default function Loading() {
             <div className='flex justify-center content-center'>
                 <DotLottieReact
                     className='h-100'
-                    src="https://lottie.host/3acd9112-066e-410d-bcaa-9f4aeb213258/3YxKxODuZI.lottie"
+                    src={src}
                     loop
                     autoplay
                 />

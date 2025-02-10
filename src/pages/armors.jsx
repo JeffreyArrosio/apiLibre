@@ -16,35 +16,33 @@ export default function Armors() {
             setArmorList(data)
         }
     })
-    
-    const LIMITE = 20
-    let count = 0
+
+    // const LIMITE = 20
+    // let count = 0
     if (loading) return <div><Loading></Loading></div>
     if (error) return <div>ERROR COLOSAL</div>
-    console.log(data);
     return (
         <>
             <h1 className='text-6xl text-center mt-4'>Armors</h1>
             {
                 data.map(armor => {
                     // console.log(armor);
-                    count++
-                    if (count < LIMITE)
+                    // count++
+                    // if (count < LIMITE)
+                    if(armor.pieces[0].assets)
                         return (
                             <div key={armor.id}>
                                 <Link className='flex justify-center text-4xl cursor-pointer' to={`/armor/${armor.id}`}>{armor.name}</Link>
-                                <div className='flex space-x-4 p-4 justify-center'>
+                                <div className='flex space-x-4 p-4 justify-center flex-wrap'>
                                     {
                                         armor.pieces.map(piece => {
-                                            if (piece.assets)
                                                 return (
                                                     <div key={piece.id}>
-                                                        <img src={piece.assets.imageMale} alt="armor" className="w-50 h-50 object-cover rounded-lg border-2" />
+                                                        <img src={piece.assets.imageMale} alt="armorM" className="w-50 h-50 object-cover rounded-lg border-2" />
                                                     </div>
                                                 )
                                         }
                                         )
-
                                     }
                                 </div>
                             </div>
@@ -52,7 +50,6 @@ export default function Armors() {
                 }
                 )
             }
-            <h1>FIN</h1>
         </>
     )
 }

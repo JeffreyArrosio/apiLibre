@@ -1,34 +1,32 @@
 import useFetch from '../components/useFetch'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
+import { MonsterContext } from '../components/context'
+import Loading from './loading'
 
 export default function Monsters() {
-    const { array, setArray } = useState([])
+
+    const {setMonsterList} = useContext(MonsterContext)
+
     const { data, loading, error } = useFetch("https://mhw-db.com/monsters")
-    // useEffect(() => {
-    //     setArray(data)
-    // }
-    // ,[])
-    const LIMITE = 20
-    let count = 0
-    if (loading) return <div>Uniendo piezas de Anjanath...</div>
+    useEffect(() => {
+        if(data)setMonsterList(data)
+    })
+
+    if (loading) return <div><Loading></Loading></div>
     if (error) return <div>ERROR COLOSAL</div>
     console.log(data);
     return (
         <>
             <h1>Monsters</h1>
-            {/* <div className='flex flex-wrap space-x-4 p-4' >
-                {
-                    data.map(weapon => {
-                        console.log(weapon);
-                        if (weapon.assets)
-                            return (
-                                <img src={weapon.assets.image} alt="arma" className="w-40 h-40 object-cover rounded-lg" key={weapon.id} />
-                            )
-                    }
+            {
+                data.map(monster => {
+                    return(
+                        <div key={monster.id}>
+                            <h2 className='text-3xl'>{monster.name}</h2>
+                        </div>
                     )
-                }
-            </div>
-            <h1>FIN</h1> */}
+                })
+            }
         </>
     )
 }
